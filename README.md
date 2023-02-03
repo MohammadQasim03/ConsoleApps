@@ -1,9 +1,9 @@
 # C# Console Applications App01 to App05
 | Author | Details |
 | ---- | ---- |
-**Name**: | Student Name  |
-**Student ID**: | 12345678 |
-**Course:** | Computing |
+**Name**: | Mohammad Qasim Matloob   |
+**Student ID**: | 22210069 |
+**Course:** | Cyber Secuirty  |
 **Module**: | CO453     |
 **Started**: | January 2021 |    
 
