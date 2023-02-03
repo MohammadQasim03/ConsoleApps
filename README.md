@@ -3,9 +3,9 @@
 | ---- | ---- |
 **Name**: | Mohammad Qasim Matloob   |
 **Student ID**: | 22210069 |
-**Course:** | Cyber Secuirty  |
+**Course:** |Cyber Security|
 **Module**: | CO453     |
-**Started**: | January 2021 |    
+**Started**: |February 2023 |    
 
 1. App01: Distance Converter
 2. App02: BMI Calculator
