@@ -17,12 +17,17 @@ namespace ConsoleAppProject.App01
     public class DistanceConverter
     {
         private double miles;
-        private double feet; 
+        private double feet;
+
+
         /// <summary>
         /// 
         /// </summary>
         public void Run()
         {
+            InputMiles();
+            CalculateFeet();
+            OutputFeet();
 
         }
 
@@ -32,7 +37,9 @@ namespace ConsoleAppProject.App01
         /// </summary>
         private void InputMiles()
         {
-
+            Console.Write("Please enter the number of miles >");
+            string value = Console.ReadLine();
+            miles = Convert.ToDouble(value);
         }
 
         /// <summary>
