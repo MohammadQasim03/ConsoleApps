@@ -21,12 +21,24 @@ namespace ConsoleAppProject.App01
 
         public const double METRES_IN_MILES = 1609.34;
 
-        private double miles;
+        public const double FEET_IN_METRES = 3.28084;
 
-        private double feet;
+        public const string FEET = "Feet";
+        public const string METRES = "Metres";
+        public const string MILES = "Miles";
 
-        private double metres; 
 
+        private double fromDistance;
+        private double toDistance;
+
+        private string fromUnit;
+        private string toUnit;
+
+        public DistanceConverter()
+        {
+            fromUnit = MILES;
+            toUnit = FEET;
+        }
 
         /// <summary>
         /// This Method will input the distance mesaured in miles
@@ -36,31 +48,11 @@ namespace ConsoleAppProject.App01
         /// 
         public void MilesToFeet()
         {
-            OutputHeading("Converting Miles to Feet");
+            OutputHeading($"Converting {fromUnit} to {toUnit}");
 
-            miles = InputDistance("Please enter the number of miles > ");
+            fromDistance = InputDistance($"Please enter the number of {fromUnit}> ");
             CalculateFeet();
-            OutputDistance(miles, nameof(miles), feet, nameof(feet));
-
-        }
-
-        public void FeetToMiles()
-        {
-            OutputHeading("Converting Feet to Miles");
-
-            feet = InputDistance("Please enter the number of feet > ");
-            CalculateFeet();
-            OutputDistance(feet , nameof(feet), miles, nameof(miles));
-
-        }
-
-        public void MilesToMetres()
-        {
-            OutputHeading("Converting Miles to Metres");
-
-            metres  = InputDistance("Please enter the number of metre > ");
-            CalculateFeet();
-            OutputDistance(miles, nameof(miles), metres , nameof(metres));
+            OutputDistance(fromDistance , fromUnit, toDistance , toUnit);
 
         }
 
@@ -76,24 +68,6 @@ namespace ConsoleAppProject.App01
             return Convert.ToDouble(value);
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void alculateFeet()
-        {
-            feet  = miles * FEET_IN_MILES;
-        }
-
-        private void CalculateMiles()
-        {
-            miles = feet  * FEET_IN_MILES;
-        }
-
-        private void CalculateMetres()
-        {
-            metres = miles * FEET_IN_MILES;
-        }
 
         /// <summary>
         /// 
