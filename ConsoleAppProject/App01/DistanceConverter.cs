@@ -51,10 +51,10 @@ namespace ConsoleAppProject.App01
         {
             OutputHeading();
 
-            fromUnit = SelectUnit("Please select the from distance unit > ");
-            toUnit = SelectUnit("Please select the to distance unit > ");
+            fromUnit = SelectUnit("\nPlease select the from distance unit > ");
+            toUnit = SelectUnit("\nPlease select the to distance unit > ");
 
-            Console.WriteLine($"/n Converting {fromUnit} to {toUnit}");
+            Console.WriteLine($"\n Converting {fromUnit} to {toUnit}");
 
 
             fromDistance = InputDistance($"Please enter the number of {fromUnit}> ");
@@ -65,16 +65,31 @@ namespace ConsoleAppProject.App01
 
         private void CalculateDistance()
         {
-            if(fromUnit == MILES && toUnit == FEET)
+            if (fromUnit == MILES && toUnit == FEET)
             {
                 toDistance = fromDistance * FEET_IN_MILES;
             }
 
-            else if(fromUnit == FEET && toUnit == MILES)
+            else if (fromUnit == FEET && toUnit == MILES)
             {
                 toDistance = fromDistance / FEET_IN_MILES;
             }
-
+            else if (fromUnit == MILES && toUnit == METRES)
+            {
+                toDistance = fromDistance * METRES_IN_MILES;
+            }
+            else if (fromUnit == METRES && toUnit == MILES)
+            {
+                toDistance = fromDistance / METRES_IN_MILES;
+            }
+            else if (fromUnit == METRES && toUnit == FEET)
+            {
+                toDistance = fromDistance * FEET_IN_METRES;
+            }
+            else if (fromUnit == FEET && toUnit == METRES)
+            {
+                toDistance = fromDistance / FEET_IN_METRES;
+            }       
         }
 
         private string SelectUnit(string prompt)
@@ -82,12 +97,15 @@ namespace ConsoleAppProject.App01
             string choice = DisplayChoices(prompt);
 
             string unit = ExecuteChoice(choice);
-            Console.WriteLine($"/n You have chosen {unit}");
+            Console.WriteLine($"\n You have chosen {unit}");
             return unit;
         }
 
 
-
+        ///<summary>  Using a series of if-else statements that compare the string value to several constant string values, the method verifies the value of the "chosen" parameter (FEET, METRES, and MILES). <summary>
+        /// Using a series of if-else statements that compare the string value to several constant string values, the method verifies the value of the "chosen" parameter (FEET, METRES, and MILES).
+        ///The procedure returns the appropriate string value if "choice" corresponds to any of these constant values.The method returns nothing if that is the case.
+        /// </summary>
         private static string ExecuteChoice(string choice)
         {
             if (choice.Equals("1"))
@@ -106,6 +124,10 @@ namespace ConsoleAppProject.App01
 
             return null;
         }
+
+        //This C# code defines a private static method called "DisplayChoices" that displays a list of options for the user to choose from and prompts them to input their choice.
+        //The options are displayed using interpolated strings that reference the values of the constants "FEET", "METRES", and "MILES".
+
 
         private static string DisplayChoices(string prompt)
         {
@@ -153,7 +175,7 @@ namespace ConsoleAppProject.App01
 
         private void OutputHeading()
         {
-            Console.WriteLine("/n---------------------------------------------");
+            Console.WriteLine("\n---------------------------------------------");
             Console.WriteLine("             Distance Converter       ");
             Console.WriteLine("           By Mohammad Qasim Matloob  ");
             Console.WriteLine("---------------------------------------------\n");
