@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 
 namespace ConsoleAppProject.App01
 {
@@ -33,6 +33,9 @@ namespace ConsoleAppProject.App01
 
         private string fromUnit;
         private string toUnit;
+
+       
+
 
         public DistanceConverter()
         {
@@ -89,7 +92,7 @@ namespace ConsoleAppProject.App01
             else if (fromUnit == FEET && toUnit == METRES)
             {
                 toDistance = fromDistance / FEET_IN_METRES;
-            }       
+            }
         }
 
         private string SelectUnit(string prompt)
@@ -125,11 +128,18 @@ namespace ConsoleAppProject.App01
             return null;
         }
 
-        //This C# code defines a private static method called "DisplayChoices" that displays a list of options for the user to choose from and prompts them to input their choice.
-        //The options are displayed using interpolated strings that reference the values of the constants "FEET", "METRES", and "MILES".
+       
 
 
-        private static string DisplayChoices(string prompt)
+
+
+
+
+//This C# code defines a private static method called "DisplayChoices" that displays a list of options for the user to choose from and prompts them to input their choice.
+//The options are displayed using interpolated strings that reference the values of the constants "FEET", "METRES", and "MILES".
+
+
+private static string DisplayChoices(string prompt)
         {
             Console.WriteLine();
             Console.WriteLine($" 1.{FEET}");
@@ -142,6 +152,7 @@ namespace ConsoleAppProject.App01
             return choice;
         }
 
+       
 
 
 

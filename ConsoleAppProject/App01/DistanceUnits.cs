@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ConsoleAppProject.App01
 {
@@ -6,12 +7,17 @@ namespace ConsoleAppProject.App01
     /// List of units used to measure distance
     /// </summary>
     public enum DistanceUnits
-    {
-        [Display(Name = "No Unit")]
+    { 
         NoUnit,
         Feet,
         Metres,
         Kilometres,
         Miles
     }
+
 }
+
+
+
+
+                   
