@@ -55,7 +55,7 @@ namespace ConsoleAppProject.App02
             Console.WriteLine(GetHealthMessage());
             Console.WriteLine(GetBameMesssage());
 
-
+        }
 
 
 
@@ -68,15 +68,16 @@ namespace ConsoleAppProject.App02
             {
                 string[] choices = new string[]
                 {
-                    "Metric Units"
+                    "Metric Units",
                     "Imperial Units"
                 };
 
-                int choice = ConsoleHelper.SelectChoice(choice);
+                int choice = ConsoleHelper.SelectChoice(choices);
                 if (choice == 1)
                 {
                     return UnitSystems.Metric
                 }
+
                 else return UnitSystems.Imperial;
             }
 
