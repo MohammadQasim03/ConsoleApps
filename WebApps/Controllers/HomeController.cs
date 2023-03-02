@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using WebApps.Models;
+using ConsoleAppProject.App02;
 
 namespace WebApps.Controllers;
 
@@ -17,7 +18,19 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpGet]
     public IActionResult BmiCalculator()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult BmiCalculator(BmiCalculator bmi)
+    {
+        return View();
+    }
+
+    public IActionResult HealthMessage()
     {
         return View();
     }
