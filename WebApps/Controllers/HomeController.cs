@@ -17,7 +17,15 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult BmiCalculator()
+    {
+        return View();
+    }
 
+    public IActionResult StudentMarks()
+    {
+        return View();
+    }
 
     public IActionResult Privacy()
     {
