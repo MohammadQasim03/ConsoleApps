@@ -8,11 +8,17 @@ namespace ConsoleAppProject.App02
     /// Please describe the main features of this App
     /// </summary>
     /// <author>
-    /// Student Name version 0.1
+    /// Mohammad version 0.1
     /// </author>
     public class BmiCalculator
     {
-        public const double OBESELEVELS = 40.0;
+
+        public const double UnderWeight = 18.50;
+        public const double NormalWeight = 24.9;
+        public const double OverWeight = 29.9;
+        public const double ObeseLevel1 = 34.9;
+        public const double ObeseLevel2 = 39.9;
+        public const double ObeseLevel3 = 40.0;
 
         public const int InchesInFeet = 12;
         public const int PoundsInStones = 14;
@@ -20,16 +26,16 @@ namespace ConsoleAppProject.App02
 
         //Metric Details
 
-        public double kilograms { get; set; }
+        public double Kilograms { get; set; }
         public int Centimetres { get; set; }
 
         //Imperial Details
 
-        public int stones { get; set; }
+        public int Stones { get; set; }
+        public int Pounds { get; set; }
         public int Inches { get; set; }
+        public int Feet { get; set; }
 
-
-        private double metres;
 
         ///<sumary>
         ///Prompt the user to select Imperial or Metric
@@ -40,7 +46,10 @@ namespace ConsoleAppProject.App02
         public void CalculateIndex()
         {
             ConsoleHelper.OutputHeading("Body Mass Index Calculator");
+            Console.WriteLine("Mohammad Matloob");
+
             UnitSystems unitSystems = SelectUnits();
+
             if (unitSystems == UnitSystems.Metric)
             {
                 InputMetricDeatils();
@@ -49,97 +58,78 @@ namespace ConsoleAppProject.App02
             else
             {
                 InputImperialDetails();
-                CalculateImperialBMI();
+                CalculateImperailBMI();
             }
 
             Console.WriteLine(GetHealthMessage());
             Console.WriteLine(GetBameMesssage());
-
         }
 
-
-
-            ///<summary>
-            ///Prompt the user to select imperial or metric
-            ///units for entering their weight and height
-            /// </summary>
-
-            private UnitSystems SelectUnits()
+        ///<summary>
+        /// Prompt the user to select imperial or metric
+        /// units for entering their weight and height
+        /// </summary>
+        private UnitSystems SelectUnits()
+        {
+            string[] choices = new string[]
             {
-                string[] choices = new string[]
-                {
-                    "Metric Units",
-                    "Imperial Units"
-                };
+                "Metric Units",
+                "Imperial Units"
+            };
 
-                int choice = ConsoleHelper.SelectChoice(choices);
-                if (choice == 1)
-                {
-                    return UnitSystems.Metric
-                }
-
-                else return UnitSystems.Imperial;
+            int choice = ConsoleHelper.SelectChoice(choices);
+            
+            if (choice == 1)
+            {
+                return UnitSystems.Metric;
             }
+            else return UnitSystems.Imperial;
+        }
 
-            ///<summary>
-            ///Input the users height in feet and inches
-            ///and their weight in stones and pounds
-            /// </summary>
+        ///<summary>
+        ///Input the users height in feet and inches
+        ///and their weight in stones and pounds
+        /// </summary>
+        private void InputImperialDetails()
+        {
+            Console.WriteLine(" Enter your Height to the nearest feet and inches ");
+            Console.WriteLine();
 
-            private void InputImperialDetails()
-            {
-                Console.WriteLine(" Enter your Height to the nearest feet and inches ");
-                Console.WriteLine();
-
-                Feet = (int)ConsoleHelper.InputNumber("Enter your height in feet > ");
-                Inches = (int)ConsoleHelper.InputNumber)"Enter your height in inches > ");
+            Feet = (int)ConsoleHelper.InputNumber("Enter your height in feet > ");
+            Inches = (int)ConsoleHelper.InputNumber("Enter your height in inches > ");
 
             Console.WriteLine();
             Console.WriteLine("Enter your weight to the nearest stones and pounds");
             Console.WriteLine();
 
-            Stone = (int)ConsoleHelper.InputNumber("Enter your weight in stones > ");
+            Stones = (int)ConsoleHelper.InputNumber("Enter your weight in stones > ");
             Pounds = (int)ConsoleHelper.InputNumber("Enter your weight in pounds > ");
-
-
         }
 
-    
         public void CalculateMetricBMI()
         {
-            Index = kilograms / (metres * metres);
+            int metres = Centimetres * 100;
+            Index = Kilograms / (metres * metres);
         }
 
         public void CalculateImperailBMI()
         {
             Inches += Feet * InchesInFeet;
-            Pounds += stones * PoundsInStones;
+            Pounds += Stones * PoundsInStones;
 
             Index = (double)Pounds * 703 / (Inches * Inches);
         }
-
-
-
-
-
-
-
-
-
-
 
         ///<summary>
         ///Input the Users height in metres and
         ///their weight in Kilograms
         /// </summary>
-
         private void InputMetricDeatils()
         {
             Centimetres = (int)ConsoleHelper.InputNumber("" +
                 "\n Enter your height in centimetres > ");
-            metres = (double)Centimetres / 100;
-
-            kilograms = ConsoleHelper.InputNumber("" +
+            
+            Kilograms = ConsoleHelper.InputNumber("" +
                 "Enter your weight in kilograms > ");
         }
 
@@ -151,45 +141,44 @@ namespace ConsoleAppProject.App02
         {
             StringBuilder message = new StringBuilder("\n");
 
-            if (Index < Underweight)
+            if (Index < UnderWeight)
             {
                 message.Append($"Your BMI is {Index:0.00}," +
                     $"You are in the normal range!");
             }
-            else if (Index <= NormalRange)
+            else if (Index <= NormalWeight)
             {
                 message.Append($" Your BMI is {Index:0.00}," +
                     $"You are in the normal range");
             }
-            else if (Index <= Overweight)
+            else if (Index <= OverWeight)
             {
                 message.Append($" Your BMI is {Index:0.00}," +
                     $"You are overweight!");
             }
-            else if (Index <= obeselevel1)
+            else if (Index <= ObeseLevel1)
             {
                 message.Append($" Your BMI is {Index:0.00}," +
                    $"You are obese class I");
             }
-            else if (Index <= obeselevel2)
+            else if (Index <= ObeseLevel2)
             {
                 message.Append($" Your BMI is {Index:0.00}," +
                    $"You are obese class II");
             }
-            else if (Index <= obeselevel3)
+            else if (Index <= ObeseLevel3)
             {
                 message.Append($" Your BMI is {Index:0.00}," +
                    $"You are obese class III");
             }
 
             return message.ToString();
-
         }
+
         ///<summary>
         ///Output a message for BAE users who are
         ///at higher risk 
         /// </summary>
-
         public string GetBameMesssage()
         {
             StringBuilder message = new StringBuilder("\n");
@@ -197,9 +186,8 @@ namespace ConsoleAppProject.App02
             message.Append("ethnic groups, you hae a higher risk");
             message.Append("\n");
             message.Append("\t Adults 23.0 or more are at increased risk");
+
+            return message.ToString();
         }
-
-
-
     }
 }
